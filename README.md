@@ -2,7 +2,7 @@
 
 Prerequisite: install [ripgrep](https://github.com/BurntSushi/ripgrep).
 
-After cloning this repository, go to .config and clone the Packer plugin manager, so you can use ":PackerSync" and get updates for the installed plugins.
+After cloning this repository, clone the Packer plugin manager, so you can use ":PackerSync" and get updates for the installed plugins.
 
 ```shell
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
