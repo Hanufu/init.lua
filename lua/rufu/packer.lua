@@ -7,16 +7,14 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-
+--plugin to search file and more
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
- 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use({ 'rose-pine/neovim', as = 'rose-pine' }) --Theme Rose-Pine
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) --Define the highlighting in all programming languages 
 
 end)
 
