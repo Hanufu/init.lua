@@ -42,6 +42,8 @@ lsp_config.clangd.setup({
         '.git'
     ),
     on_attach = function(client, bufnr)
+        -- Save compile and run c and cpp programs
+        vim.keymap.set('n', '<F5>', [[:w<CR>:!g++ % -o %:r && ./%:r && rm %:r<CR>]], { noremap = true, silent = true })
         vim.keymap.set('n', '<leader>ss', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
     end
 

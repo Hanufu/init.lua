@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set('n', ';', ':')
 vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("w")
     vim.cmd("so")
 end)
 
@@ -29,6 +30,3 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- REGEX - With cursor under word, change to the any other word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- Save compile and run c and cpp programs
-vim.keymap.set('n', '<F5>', [[:w<CR>:!g++ % -o %:r && ./%:r && rm %:r<CR>]], { noremap = true, silent = true })
