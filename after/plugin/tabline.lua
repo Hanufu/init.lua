@@ -6,7 +6,6 @@ local has_any_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-require 'lspconfig'.clangd.setup {}
 require "lsp_signature".setup()
 vim.o.completeopt = 'menuone,noselect'
 
@@ -37,7 +36,7 @@ cmp.setup({
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true),
-                    '')
+                    '', true)
             else
                 fallback()
             end
@@ -46,7 +45,8 @@ cmp.setup({
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '',
+                    true)
             else
                 fallback()
             end
@@ -75,7 +75,7 @@ tabnine:setup({
 })
 
 require('lspkind').init({
-    mode = 'condicons',
+    mode = 'codicons',
     symbol_map = {
         Text = "",
         Method = "",
