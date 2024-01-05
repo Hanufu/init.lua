@@ -27,3 +27,14 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- REGEX - With cursor under word, change to the any other word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Tree
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- Fechar a aba atual com <C-w>
+vim.keymap.set("n", "<C-w>", ":tabclose<CR>")
+
+-- Navegar para a próxima aba com Ctrl + Tab
+vim.keymap.set("n", "<C-Tab>", ":tabnext<CR>")
+
+-- Navegar para a aba anterior com Shift + Tab
+vim.keymap.set("n", "<S-Tab>", ":tabprev<CR>")
