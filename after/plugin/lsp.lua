@@ -55,6 +55,16 @@ lsp_config.clangd.setup({
     end
 })
 
+-- CSharp
+lsp_config.csharp_ls.setup {
+    cmd = { "csharp-ls" },
+    filetypes = { "cs" },
+    init_options = {
+        AutomaticWorkspaceInit = true
+    },
+}
+
+
 -- Configurações do LSP Signature
 lsp_signature.setup()
 
