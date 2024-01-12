@@ -10,8 +10,7 @@
 
 2. **Install the Packer Plugin Manager:**
     ```shell
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     ```
 
 3. **Remove VI and Add Dependencies:**
@@ -24,8 +23,7 @@
 4. **Download and Update Neovim:**
     ```shell
     wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-    chmod u+x nvim.appimage && ./nvim.appimage
-    sudo mv nvim.appimage /usr/bin/nvim
+    sudo chmod u+x nvim.appimage && sudo mv nvim.appimage /usr/bin/nvim
     ```
 
 ## Usage
