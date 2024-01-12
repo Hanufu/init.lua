@@ -9,7 +9,7 @@ Before using this configuration, make sure you have [ripgrep](https://github.com
 1. Clone this repository into your Neovim configuration directory:
 
     ```shell
-    git clone https://github.com/Hanufu/nvim.git ~/.config/
+    git clone https://github.com/Hanufu/nvim.git ~/.config/nvim
     cd ~/.config/nvim
     ```
 
