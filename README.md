@@ -1,9 +1,5 @@
 # Hnaufu Neovim Configuration
 
-## Prerequisites
-
-Before using this configuration, make sure you have [ripgrep](https://github.com/BurntSushi/ripgrep) installed.
-
 ## Getting Started
 
 1. **Clone this Repository:**
