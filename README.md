@@ -20,7 +20,10 @@
     sudo apt update
     sudo apt-get install clangd-12 make g++ cpp ripgrep unzip cmake gcc xclip fuse
     ```
-
+3.5 ***Custom Paths and Aliases for Neovim Configuration
+```shell
+echo -e '\n# Custom Paths and Aliases for Neovim Configuration\nexport PATH="/usr/bin/nvim:$PATH"\nexport PATH="/usr/lib/llvm-12/bin:$PATH"\nalias cdvim="cd ~/.config/nvim"\nalias vim="nvim"\nalias ~~="cd ~"' >> ~/.bashrc && source ~/.bashrc
+```
 4. **Download and Update Neovim:**
     ```shell
     wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
