@@ -6,7 +6,7 @@ After cloning this repository, clone the Packer plugin manager, so you can use "
 
 Removing VI and Adding dependences
 ```shell
-sudo apt purge vi vim vim-common vim-runtime vim-tiny && sudo apt-get install clangd-12 make g++ cpp ripgrep unzip cmake gcc xclip
+sudo apt purge vim vim-common vim-runtime vim-tiny && sudo apt-get install clangd-12 make g++ cpp ripgrep unzip cmake gcc xclip
 ```
 Donwload Nvim updated
 ```shell
