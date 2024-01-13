@@ -1,10 +1,6 @@
 local lsp_zero = require('lsp-zero')
 local lsp_config = require('lspconfig')
 local lsp_signature = require("lsp_signature")
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local cmp = require 'cmp'
-local luasnip = require("luasnip")
-local lspkind = require('lspkind')
 
 -- Configurações do lsp-zero
 lsp_zero.on_attach(function(client, bufnr)
@@ -31,38 +27,6 @@ lsp_zero.set_sign_icons({
 
 -- Lua
 lsp_config.lua_ls.setup({})
-
--- ToggleTerm
-function CompileAndRunCpp()
-    local filename = vim.fn.expand('%')
-    local executable = vim.fn.expand('%:r')
-
-    -- Verificar se já existe um executável com o mesmo nome e excluí-lo
-    local existing_executable = executable
-    if vim.fn.filereadable(existing_executable) == 1 then
-        vim.fn.delete(existing_executable)
-    end
-
-    -- Comando de compilação
-    local compile_command = string.format('g++ %s -o %s', filename, executable)
-
-    -- Adicionar um comando para excluir o executável no evento de fechamento do toggleterm
-    local delete_executable_command = string.format("!rm %s", executable)
-    local toggleterm_command = string.format('ToggleTerm --dir="%s" --title="%s" --noclose=1', vim.fn.getcwd(), executable)
-
-    -- Executar o comando de compilação
-    vim.cmd('echohl WarningMsg | echom "Compiling..." | echohl NONE')
-    vim.fn.system(compile_command)
-
-    -- Aguardar um momento para garantir que o toggleterm tenha tempo para abrir
-    vim.cmd('sleep 100m')
-
-    -- Abrir o toggleterm
-    vim.cmd(toggleterm_command)
-
-    -- Adicionar o comando de exclusão do executável no evento de fechamento do toggleterm
-    vim.cmd(string.format("autocmd TermClose <buffer> %s", delete_executable_command))
-end
 
 -- Configuração do clangd
 lsp_config.clangd.setup({
@@ -118,82 +82,5 @@ lsp_config.gopls.setup({
 
 -- Configurações do LSP Signature
 lsp_signature.setup()
-
--- Configurações do cmp_nvim_lsp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.setup({ capabilities = capabilities })
-
--- Configurações do cmp
-local source_mapping = {
-    buffer = "◉ Buffer",
-    nvim_lsp = "👐 LSP",
-    nvim_lua = "🌙 Lua",
-    cmp_tabnine = "💡 Tabnine",
-    path = "🚧 Path",
-    luasnip = "🌜 LuaSnip"
-}
-
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'nvim_lua' },
-    },
-
-    formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            local menu = source_mapping[entry.source.name]
-            if entry.source.name == 'cmp_tabnine' then
-                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                    menu = entry.completion_item.data.detail .. ' ' .. menu
-                end
-                vim_item.kind = ''
-            end
-            vim_item.menu = menu
-            return vim_item
-        end
-    },
-
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    mapping = {
-        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-q>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
-        ['<Tab>'] = function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-            else
-                fallback()
-            end
-        end,
-        ['<S-Tab>'] = function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-            else
-                fallback()
-            end
-        end,
-    },
-})
 
 require("luasnip/loaders/from_vscode").load()
