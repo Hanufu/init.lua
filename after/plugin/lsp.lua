@@ -32,7 +32,39 @@ lsp_zero.set_sign_icons({
 -- Lua
 lsp_config.lua_ls.setup({})
 
--- C and CPP
+-- ToggleTerm
+function CompileAndRunCpp()
+    local filename = vim.fn.expand('%')
+    local executable = vim.fn.expand('%:r')
+
+    -- Verificar se já existe um executável com o mesmo nome e excluí-lo
+    local existing_executable = executable
+    if vim.fn.filereadable(existing_executable) == 1 then
+        vim.fn.delete(existing_executable)
+    end
+
+    -- Comando de compilação
+    local compile_command = string.format('g++ %s -o %s', filename, executable)
+
+    -- Adicionar um comando para excluir o executável no evento de fechamento do toggleterm
+    local delete_executable_command = string.format("!rm %s", executable)
+    local toggleterm_command = string.format('ToggleTerm --dir="%s" --title="%s" --noclose=1', vim.fn.getcwd(), executable)
+
+    -- Executar o comando de compilação
+    vim.cmd('echohl WarningMsg | echom "Compiling..." | echohl NONE')
+    vim.fn.system(compile_command)
+
+    -- Aguardar um momento para garantir que o toggleterm tenha tempo para abrir
+    vim.cmd('sleep 100m')
+
+    -- Abrir o toggleterm
+    vim.cmd(toggleterm_command)
+
+    -- Adicionar o comando de exclusão do executável no evento de fechamento do toggleterm
+    vim.cmd(string.format("autocmd TermClose <buffer> %s", delete_executable_command))
+end
+
+-- Configuração do clangd
 lsp_config.clangd.setup({
     single_file_support = true,
     cmd = { "clangd" },
@@ -50,6 +82,9 @@ lsp_config.clangd.setup({
         '.git'
     ),
     on_attach = function(client, bufnr)
+        -- Com o toggleTerm
+        vim.api.nvim_set_keymap('n', '<F6>', [[:lua CompileAndRunCpp()<CR>]], { noremap = true, silent = true })        -- Sem o toggleTerm
+        -- Sem o toggleTerm
         vim.keymap.set('n', '<F5>', [[:w<CR>:!g++ % -o %:r && %:r && rm %:r<CR>]], { noremap = true, silent = true })
         vim.keymap.set('n', '<leader>ss', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
     end

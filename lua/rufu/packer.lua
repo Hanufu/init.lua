@@ -42,11 +42,14 @@ return require('packer').startup(function(use)
             { 'onsails/lspkind-nvim' }
         }
     }
-
+    -- Explorador de Arquivos tree
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional
         },
     }
+
+    -- Terminal integrado
+    use {"akinsho/toggleterm.nvim"}
 end)
