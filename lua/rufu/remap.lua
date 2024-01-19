@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Tree
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-vim.keymap.set("n", "<leader>pv",":NvimTreeFocus<CR>", opts)
+vim.keymap.set("n", "<leader>pv", ":NvimTreeFocus<CR>", opts)
 
 -- Fechar a aba atual com <C-w>
 vim.keymap.set("n", "<C-w>", ":tabclose<CR>")

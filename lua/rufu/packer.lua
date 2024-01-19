@@ -22,8 +22,8 @@ return require('packer').startup(function(use)
         branch = 'v3.x',
         requires = {
             --- Uncomment these if you want to manage the language servers from neovim
-            -- {'williamboman/mason.nvim'},
-            -- {'williamboman/mason-lspconfig.nvim'},
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
             { 'ray-x/lsp_signature.nvim' },
             { 'L3MON4D3/LuaSnip' },
-            { 'tzachar/cmp-tabnine',         run = './install.sh', requires = 'hrsh7th/nvim-cmp' },
+            { 'tzachar/cmp-tabnine',              run = './install.sh', requires = 'hrsh7th/nvim-cmp' },
             { 'onsails/lspkind-nvim' }
         }
     }
@@ -51,5 +51,5 @@ return require('packer').startup(function(use)
     }
 
     -- Terminal integrado
-    use {"akinsho/toggleterm.nvim"}
+    use { "akinsho/toggleterm.nvim" }
 end)
