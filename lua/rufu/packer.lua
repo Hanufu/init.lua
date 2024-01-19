@@ -18,24 +18,23 @@ return require('packer').startup(function(use)
 
     --LPS
     use {
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-
+        'williamboman/mason.nvim' ,
+        'williamboman/mason-lspconfig.nvim',
         -- LSP Support
-        { 'neovim/nvim-lspconfig' },
+         'neovim/nvim-lspconfig' ,
         -- Autocompletion
-        { 'hrsh7th/nvim-cmp' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-path' },
-        { 'hrsh7th/cmp-nvim-lua' },
-        { 'hrsh7th/cmp-cmdline' },
-        { 'saadparwaiz1/cmp_luasnip' },
-        { 'rafamadriz/friendly-snippets' },
-        { 'ray-x/lsp_signature.nvim' },
-        { 'L3MON4D3/LuaSnip' },
+         'hrsh7th/nvim-cmp' ,
+         'hrsh7th/cmp-nvim-lsp' ,
+         'hrsh7th/cmp-buffer' ,
+         'hrsh7th/cmp-path' ,
+         'hrsh7th/cmp-nvim-lua' ,
+         'hrsh7th/cmp-cmdline' ,
+         'saadparwaiz1/cmp_luasnip' ,
+         'rafamadriz/friendly-snippets' ,
+         'ray-x/lsp_signature.nvim' ,
+     'L3MON4D3/LuaSnip' ,
+         'onsails/lspkind-nvim',
         { 'tzachar/cmp-tabnine',              run = './install.sh', requires = 'hrsh7th/nvim-cmp' },
-        { 'onsails/lspkind-nvim' }
     }
 
     -- Explorador de Arquivos tree
@@ -45,7 +44,15 @@ return require('packer').startup(function(use)
             'nvim-tree/nvim-web-devicons', -- optional
         },
     }
-
     -- Terminal integrado
-    use { "akinsho/toggleterm.nvim" }
+    use { "akinsho/toggleterm.nvim"}
+
+    -- Debug Adapter - DAP
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use { "folke/neodev.nvim" }
+    use { "mfussenegger/nvim-lint"}
+    use { "mhartington/formatter.nvim" }
+
+
+
 end)
