@@ -18,30 +18,26 @@ return require('packer').startup(function(use)
 
     --LPS
     use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        requires = {
-            --- Uncomment these if you want to manage the language servers from neovim
-            --          { 'williamboman/mason.nvim' },
-            --          { 'williamboman/mason-lspconfig.nvim' },
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
 
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'hrsh7th/cmp-nvim-lua' },
-            { 'hrsh7th/cmp-cmdline' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'rafamadriz/friendly-snippets' },
-            { 'ray-x/lsp_signature.nvim' },
-            { 'L3MON4D3/LuaSnip' },
-            { 'tzachar/cmp-tabnine',         run = './install.sh', requires = 'hrsh7th/nvim-cmp' },
-            { 'onsails/lspkind-nvim' }
-        }
+        -- LSP Support
+        { 'neovim/nvim-lspconfig' },
+        -- Autocompletion
+        { 'hrsh7th/nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-nvim-lua' },
+        { 'hrsh7th/cmp-cmdline' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'rafamadriz/friendly-snippets' },
+        { 'ray-x/lsp_signature.nvim' },
+        { 'L3MON4D3/LuaSnip' },
+        { 'tzachar/cmp-tabnine',              run = './install.sh', requires = 'hrsh7th/nvim-cmp' },
+        { 'onsails/lspkind-nvim' }
     }
+
     -- Explorador de Arquivos tree
     use {
         'nvim-tree/nvim-tree.lua',
