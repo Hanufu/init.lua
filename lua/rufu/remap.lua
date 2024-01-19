@@ -37,8 +37,12 @@ vim.keymap.set("n", "<leader>pv", ":NvimTreeFocus<CR>", opts)
 -- Fechar a aba atual com <C-w>
 vim.keymap.set("n", "<C-w>", ":tabclose<CR>")
 
--- Navegar para a próxima aba com Ctrl + Tab
+-- Navegar em ABAS com o tab
 vim.keymap.set("n", "<C-Tab>", ":tabnext<CR>")
-
--- Navegar para a aba anterior com Shift + Tab
 vim.keymap.set("n", "<S-Tab>", ":tabprev<CR>")
+
+-- Navegar nos BUFFERS com o tab
+vim.keymap.set("n", "<C-j>", ":bnext<CR>")
+vim.keymap.set("n", "<C-k>", ":bprev<CR>")
+
+vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = bufnr })
