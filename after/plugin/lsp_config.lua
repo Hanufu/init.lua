@@ -32,13 +32,13 @@ lsp_config.clangd.setup({
 })
 
 -- CSharp
-lsp_config.csharp_ls.setup {
-    cmd = { "csharp-ls" },
-    filetypes = { "cs" },
-    init_options = {
-        AutomaticWorkspaceInit = true
-    },
-}
+--lsp_config.csharp_ls.setup {
+  --  cmd = { "csharp-ls" },
+    --filetypes = { "cs" },
+    --init_options = {
+      --  AutomaticWorkspaceInit = true
+--  },
+-- }
 
 -- GOLang
 lsp_config.gopls.setup({

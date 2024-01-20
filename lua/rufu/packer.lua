@@ -48,8 +48,6 @@ return require('packer').startup(function(use)
     use { "akinsho/toggleterm.nvim"}
 
     -- Debug Adapter - DAP
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    use { "folke/neodev.nvim" }
     use { "mfussenegger/nvim-lint"}
     use { "mhartington/formatter.nvim" }
 
