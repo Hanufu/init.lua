@@ -31,15 +31,6 @@ lsp_config.clangd.setup({
     end
 })
 
--- CSharp
---lsp_config.csharp_ls.setup {
-  --  cmd = { "csharp-ls" },
-    --filetypes = { "cs" },
-    --init_options = {
-      --  AutomaticWorkspaceInit = true
---  },
--- }
-
 -- GOLang
 lsp_config.gopls.setup({
     settings = {
@@ -61,7 +52,7 @@ require("luasnip/loaders/from_vscode").load()
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<space>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
