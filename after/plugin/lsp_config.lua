@@ -31,6 +31,7 @@ lsp_config.clangd.setup({
     end
 })
 
+
 -- GOLang
 lsp_config.gopls.setup({
     settings = {
@@ -47,12 +48,10 @@ lsp_config.gopls.setup({
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     end,
 })
-lsp_signature.setup()
-require("luasnip/loaders/from_vscode").load()
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>d', vim.diagnostic.open_float)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
